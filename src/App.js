@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useContext } from "react";
 import "./App.css";
+import Facts from "./components/factsComponent";
 import GlobalContext from "./context/GlobalContext";
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
     fetchFacts()
   }, [])
 
-  return <div className="App"></div>;
+  return <div className="App">
+    <Facts />
+  </div>;
 }
 
 export default App;
