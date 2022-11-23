@@ -8,9 +8,15 @@ const GlobalContext = createContext(initialState)
 
 export default GlobalContext;
 
-export const GlobalProvider = () => {
+export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState)
-  return <GlobalContext.Provider value={{ facts: state.facts }}>
+  const updateFacts = (facts) => {
+    dispatch({
+      type: "UPDATE_FACTS",
+      payload: facts
+    })
+  }
+  return <GlobalContext.Provider value={{ facts: state.facts, updateFacts }}>
     {children}
   </GlobalContext.Provider>
 }
